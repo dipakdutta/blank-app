@@ -86,6 +86,28 @@ That's when I knew someone needed to build _________________________.
 
 > **Core question:** *Is this a real, painful, and frequent enough problem?*
 
+> **Source:** This phase follows Hossein Mehdipour's 9-Step Design Thinking Process. No product development begins until Step 8 (Willingness to Pay) is validated.
+
+### Design Thinking: 9-Step Overview
+
+```mermaid
+flowchart LR
+    S1["1\nIdentify\nthe Challenge"] --> S2["2\nAs-Is\nAnalysis"]
+    S2 --> S3["3\nProblem\nStatement"]
+    S3 --> S4["4\nIdeation"]
+    S4 --> S5["5\nAffinity\nMapping"]
+    S5 --> S6["6\nEvaluate\nIdeas"]
+    S6 --> S7["7\nBusiness Plan\nCanvas"]
+    S7 --> S8["8\nValidate\nWTP"]
+    S8 --> S9["9\nBreakeven\nAnalysis"]
+    S8 -->|"GATE: Only if validated"| PROD["Product\nDevelopment"]
+
+    style S8 fill:#1E40AF,color:#fff
+    style PROD fill:#22C55E,color:#fff
+```
+
+> **Hard Rule:** Product development begins ONLY after willingness to pay is validated at Step 8. Features are then sequenced: Must Have → Should Have → Nice to Have → PRD → Vibe Coding → Landing/Demo Page.
+
 ### 1.1 Niche Definition
 
 **Do not skip this.** Every downstream decision flows from your niche.
@@ -189,6 +211,39 @@ For each ICP segment, complete this map:
 | **Pain** | Frustrations, obstacles, fears |
 | **Gain** | Wants, needs, measures of success |
 
+### 1.6 Customer Journey Map (As-Is State)
+
+> **Purpose:** Before designing your solution, map your customer's current painful experience — step by step. This is the "As-Is" state. You're documenting the problem, not your fix.
+
+```mermaid
+flowchart LR
+    A["Trigger\n(What causes them\nto seek a solution?)"] --> B["Awareness\n(How they\nlearn options exist)"]
+    B --> C["Consideration\n(How they evaluate\noptions)"]
+    C --> D["Decision\n(How they\nchoose)"]
+    D --> E["Onboarding\n(First experience)"]
+    E --> F["Ongoing Use\n(Day-to-day\ninteractions)"]
+    F --> G["Frustration\nPoints\n(Where they get stuck)"]
+    G --> H["Churn or\nAdvocacy\n(They leave or refer)"]
+```
+
+**For each stage, capture:**
+
+| Stage | What Happens Today | Emotional State | Pain Level (1–5) | Opportunity |
+|---|---|---|---|---|
+| Trigger | | | | |
+| Awareness | | | | |
+| Consideration | | | | |
+| Decision | | | | |
+| Onboarding | | | | |
+| Ongoing Use | | | | |
+| Frustration Points | | | | |
+| Churn or Advocacy | | | | |
+
+**Key outputs from this exercise:**
+- The highest-pain stages become your solution's core focus
+- The emotional low points reveal your most powerful marketing messages
+- The workarounds they use become your competitive landscape
+
 ---
 
 ## PHASE 2 — Solution Design: Build the Right Thing
@@ -199,13 +254,43 @@ For each ICP segment, complete this map:
 
 Run at least one of these before committing to a solution:
 
-**Yes-And Brainstorm:** Build on every idea without rejection for 20 minutes.
+**Yes-And Brainstorm:** Build on every idea without rejection for 20 minutes. No critique allowed until the timer ends.
+
+**Metaphorical Ideation:** Pick a metaphor unrelated to your industry (e.g., "how does a hospital triage patients?") and force-map it onto your problem. This breaks pattern-locked thinking and surfaces non-obvious solutions.
 
 **Challenging Orthodoxies:** List every "obvious" assumption about your industry and ask: *what if the opposite were true?*
 
 **Mega-trends Mapping:** Which macro trends (AI, remote work, aging population, regulation) are making this problem worse right now? Your solution should ride a tailwind.
 
-### 2.2 Idea Evaluation Matrix
+### 2.2 Affinity Mapping
+
+> **Purpose:** After ideation, you have a flood of raw ideas. Affinity Mapping clusters them into patterns so you can see which problem areas have the most solution density — and where the real opportunity lives.
+
+**Process (do this on a whiteboard or Miro):**
+
+```mermaid
+flowchart TD
+    A["Capture all ideas\n(one idea per sticky note)"]
+    A --> B["Silently group similar ideas\n(no debate yet)"]
+    B --> C["Name each cluster\n(e.g., 'Automation', 'Communication', 'Compliance')"]
+    C --> D["Vote on clusters\n(dot voting: each person gets 3 votes)"]
+    D --> E["Top clusters = highest-value solution areas\n→ feed into Evaluation Matrix"]
+```
+
+**Affinity Cluster Template:**
+
+| Cluster Name | Ideas Grouped Here | Vote Count | Priority |
+|---|---|---|---|
+| | | | |
+| | | | |
+| | | | |
+
+**Rules:**
+- No editing or combining ideas during grouping — just move them
+- Clusters that emerge from the customer's language (from interviews) carry the most weight
+- Clusters with the most ideas AND the most votes move forward to evaluation
+
+### 2.3 Idea Evaluation Matrix
 
 ```mermaid
 quadrantChart
@@ -220,7 +305,7 @@ quadrantChart
 
 **Develop Here** = High Impact + High Simplicity. Start here. Always.
 
-### 2.3 Solution–Problem Alignment
+### 2.4 Solution–Problem Alignment
 
 **Rule:** Every solution must directly answer one of your top 3 problems.
 
@@ -232,7 +317,7 @@ quadrantChart
 
 > "Solutions are NOT the same as features. The feature is how you deliver the solution." — No Fluff Entrepreneurs, Session 5
 
-### 2.4 Feature Prioritization (MoSCoW)
+### 2.5 Feature Prioritization (MoSCoW)
 
 ```mermaid
 flowchart LR
@@ -248,7 +333,7 @@ flowchart LR
 
 **Validate before building:** No feature gets built without at least one customer saying "I would pay for this."
 
-### 2.5 Lean Canvas
+### 2.6 Lean Canvas
 
 Complete all 9 blocks before writing a single line of code or copy:
 
@@ -310,12 +395,21 @@ flowchart TD
 - "At what price is this getting expensive but still worth it?"
 - "At what price is this too expensive?"
 
-**Step 3:** Validate thresholds:
+**Step 3:** Run the dual WTP validation — both must pass before moving to product development:
+
+| Test | What You're Asking | Pass Threshold |
+|---|---|---|
+| **WT Pay** (Willingness to Pay) | "Would you pay $X/month for this?" | ≥ 30% say YES |
+| **WT Partner** (Willingness to Partner) | "Would you co-design this with us as a beta partner?" | ≥ 2 concrete YESes |
+
+> **Why WT Partner matters:** Someone willing to pay is a customer. Someone willing to co-design is a champion. Champions give deep feedback, refer others, and become your first case studies. Target at least 2 WT Partner commitments before writing a line of code.
+
+**Step 4:** Validate overall thresholds:
 
 ```
-30–50% of ICP say YES = Strong market signal. Move forward.
-10–29% say YES = Refine offer and retest.
-0–9% say YES = Rework offer OR exit the idea.
+WT Pay: 30–50% YES + WT Partner: 2+ commits = Build it. Move to product.
+WT Pay: 10–29% YES = Refine offer, retest.
+WT Pay: 0–9% YES = Rework offer completely OR exit the idea.
 ```
 
 ### 3.3 Revenue Model Selection
@@ -343,6 +437,41 @@ flowchart TD
 | Variable Cost per Customer | $ |
 | Price per Customer (monthly) | $ |
 | Break-Even Customers | Fixed Costs ÷ (Price – Variable Cost) |
+
+### 3.5 THE PRODUCT DEVELOPMENT GATE
+
+> This is the most important checkpoint in the entire framework.
+
+```mermaid
+flowchart TD
+    A{{"WTP Validated?\n(WT Pay ≥ 30% + WT Partner ≥ 2?)"}}
+    A -->|YES| B["✅ CLEARED TO BUILD"]
+    A -->|NO| C["🚫 DO NOT BUILD\nRevise offer, segment, or exit"]
+
+    B --> D["Step 1: Must Have features\n(MVP core only)"]
+    D --> E["Step 2: Should Have\n(v1.1 scope)"]
+    E --> F["Step 3: Nice to Have\n(v2.0 backlog)"]
+    F --> G["Step 4: PRD\n(Product Requirements Doc)"]
+    G --> H["Step 5: Vibe Coding\n(rapid prototype / build)"]
+    H --> I["Step 6: Landing & Demo Page\n(prove it before scaling it)"]
+
+    style A fill:#1E40AF,color:#fff
+    style B fill:#22C55E,color:#fff
+    style C fill:#EF4444,color:#fff
+```
+
+**Why this order?**
+
+Starting with Must Have forces ruthless prioritization. The Landing/Demo Page comes last — not first — because it should demonstrate a working solution, not a promise. Showing a real demo to early adopters triggers the WT Partner conversations that validate your next build cycle.
+
+**Product Development Checklist:**
+
+- [ ] WTP validated (WT Pay + WT Partner)
+- [ ] Breakeven customers calculated and financially viable
+- [ ] Must Have feature list agreed by team (max 3–5 features)
+- [ ] PRD written and reviewed by at least one WT Partner
+- [ ] MVP built to Must Have scope only
+- [ ] Landing/Demo Page live before any paid marketing spend
 
 ---
 
